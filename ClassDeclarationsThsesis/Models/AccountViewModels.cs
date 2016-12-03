@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace ClassDeclarationsThsesis.Models
@@ -66,20 +67,38 @@ namespace ClassDeclarationsThsesis.Models
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Email*")]
         public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Password*")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "Confirm password*")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name="Name*")]
+        public string Name { get; set; }
+        [Required]
+        [Display(Name="Surname*")]
+        public object Surname { get; set; }
+        [Display(Name = "Index number")]
+        public object IndexNumber { get; set; }
+        [Display(Name = "Dean's group")]
+        public object DeanGroup { get; set; }
+        [Required]
+        [Display(Name = "Subject*")]
+        public object Subject { get; set; }
+        [Display(Name = "Group")]
+        public object Group { get; set; }
     }
+
+
 
     public class ResetPasswordViewModel
     {
