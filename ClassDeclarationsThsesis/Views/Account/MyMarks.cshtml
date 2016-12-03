@@ -1,7 +1,41 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "My Marks";
 }
+<div>
+    <h4>Account information</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>Name</dt>
+        <dd>Student's name</dd>
+        <dt>Surname</dt>
+        <dd>Student's surname</dd>
+        <dt>Email</dt>
+        <dd>
+            @HttpContext.Current.User.Identity.Name
+        </dd>
+    </dl>
+</div>
+<div>
+    <h4>Marks</h4>
+    <table border="1", width="300">
+        <tr>
+            <th>Task name</th>
+            <th>Points</th>
+        </tr>
+        <tr>
+            <th>A1</th>
+            <th>2</th>
+        </tr>
+        <tr>
+            <th>A2</th>
+            <th>0</th>
+        </tr>
+        <tr>
+            <th>A3</th>
+            <th>10</th>
+        </tr>
+    </table>
+</div>
 
-<h2>In here the student will be able to see the marks he or she got.</h2>
 

@@ -10,14 +10,7 @@ namespace ClassDeclarationsThsesis.Controllers
 {
     public class HomeworkController : Controller
     {
-        // GET: Homework/Random
-        public ActionResult Random()
-        {
-            var homework=new Homework() {name = "Homework1", deadline = DateTime.Today, subject_id = 1};
-
-            return View();
-        }
-
+      
         public ActionResult SetHomework()
         {
             return View();
