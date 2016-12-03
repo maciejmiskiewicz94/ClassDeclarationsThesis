@@ -22,6 +22,11 @@ namespace ClassDeclarationsThsesis.Classes
             this.email = email;
             this.password = password;
         }
+
+        public User()
+        {
+        }
+
         public string setPassword(string password)
         {
             this.password = password;

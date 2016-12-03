@@ -12,7 +12,7 @@ namespace ClassDeclarationsThsesis.Classes
         public int headteacher_id;
         public List<User> teachers;
         public List<User> students;
-        public Subject(int subject_id, string name, int headteacher_id, List<User> teachers, List<User> students)
+        public Subject(int subject_id, string name, int headteacher_id, List<User> teachers, List<User> students) 
         {
             this.subject_id = subject_id;
             this.name = name;
@@ -21,5 +21,8 @@ namespace ClassDeclarationsThsesis.Classes
             this.students = students;
         }
 
+        public Subject()
+        {
+        }
     }
 }
