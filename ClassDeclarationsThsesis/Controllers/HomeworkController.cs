@@ -12,9 +12,7 @@ namespace ClassDeclarationsThsesis.Controllers
 {
     public class HomeworkController : Controller
     {
-        // GET: Homework/Random
-
-
+      
         public ActionResult SetHomework()
         {
             return View();
