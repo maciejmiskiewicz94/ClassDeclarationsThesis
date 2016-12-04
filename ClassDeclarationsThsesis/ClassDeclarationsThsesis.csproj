@@ -277,13 +277,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Homework\Declare.cshtml" />
-    <Content Include="Views\Homework\SetHomework.cshtml" />
+    <Content Include="Views\Account\Declare.cshtml" />
+    <Content Include="Views\Account\SetHomework.cshtml" />
     <Content Include="Views\Account\MyMarks.cshtml" />
-    <Content Include="Views\Classes\Classes.cshtml" />
+    <Content Include="Views\Account\Classes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Classes\" />
+    <Folder Include="Views\Homework\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

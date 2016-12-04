@@ -486,5 +486,20 @@ namespace ClassDeclarationsThsesis.Controllers
         {
             return View();
         }
+
+        public ActionResult Declare()
+        {
+            return View();
+        }
+
+        public ActionResult SetHomework()
+        {
+            return View();
+        }
+
+        public ActionResult Classes()
+        {
+            return View();
+        }
     }
 }
