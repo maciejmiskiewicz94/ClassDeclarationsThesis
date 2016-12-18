@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ClassDeclarationsDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ClassDeclarationsDCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Grading">
           <Key>
             <PropertyRef Name="user_id" />
@@ -174,7 +174,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ClassDeclarationsDBModelStoreContainer">
+        <EntityContainer Name="ClassDeclarationsDCModelStoreContainer">
           <EntitySet Name="Grading" EntityType="Self.Grading" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
@@ -220,7 +220,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ClassDeclarationsDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ClassDeclarationsDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Grading">
           <Key>
             <PropertyRef Name="user_id" />
@@ -377,7 +377,7 @@
           <End Role="Subjects" Type="Self.Subject" Multiplicity="*" />
           <End Role="Tasks" Type="Self.Task" Multiplicity="0..1" />
         </Association>
-        <EntityContainer Name="ClassDeclarationsDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ClassDeclarationsDCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Gradings" EntityType="Self.Grading" />
           <EntitySet Name="Groups" EntityType="Self.Group" />
           <EntitySet Name="Subjects" EntityType="Self.Subject" />
@@ -419,9 +419,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ClassDeclarationsDBModelStoreContainer" CdmEntityContainer="ClassDeclarationsDBEntities">
+        <EntityContainerMapping StorageEntityContainer="ClassDeclarationsDCModelStoreContainer" CdmEntityContainer="ClassDeclarationsDCEntities">
           <EntitySetMapping Name="Gradings">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.Grading">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.Grading">
               <MappingFragment StoreEntitySet="Grading">
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="task_id" ColumnName="task_id" />
@@ -431,7 +431,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Groups">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.Group">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.Group">
               <MappingFragment StoreEntitySet="Group">
                 <ScalarProperty Name="class_id" ColumnName="class_id" />
                 <ScalarProperty Name="group_id" ColumnName="group_id" />
@@ -441,7 +441,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Subjects">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.Subject">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.Subject">
               <MappingFragment StoreEntitySet="Subjects">
                 <ScalarProperty Name="class_id" ColumnName="class_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -450,7 +450,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Subjects_Users">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.Subjects_Users">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.Subjects_Users">
               <MappingFragment StoreEntitySet="Subjects_Users">
                 <ScalarProperty Name="class_id" ColumnName="class_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -459,7 +459,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.sysdiagram">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -470,7 +470,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tasks">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.Task">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.Task">
               <MappingFragment StoreEntitySet="Tasks">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="class_id" ColumnName="class_id" />
@@ -481,7 +481,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="ClassDeclarationsDBModel.User">
+            <EntityTypeMapping TypeName="ClassDeclarationsDCModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="surname" ColumnName="surname" />
@@ -492,7 +492,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="Subjects_Tasks" TypeName="ClassDeclarationsDBModel.Subjects_Tasks" StoreEntitySet="Subjects_Tasks">
+          <AssociationSetMapping Name="Subjects_Tasks" TypeName="ClassDeclarationsDCModel.Subjects_Tasks" StoreEntitySet="Subjects_Tasks">
             <EndProperty Name="Subjects">
               <ScalarProperty Name="class_id" ColumnName="class_id" />
             </EndProperty>

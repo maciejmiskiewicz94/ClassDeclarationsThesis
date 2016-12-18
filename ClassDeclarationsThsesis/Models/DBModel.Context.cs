@@ -13,10 +13,10 @@ namespace ClassDeclarationsThsesis.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ClassDeclarationsDBEntities : DbContext
+    public partial class ClassDeclarationsDCEntities : DbContext
     {
-        public ClassDeclarationsDBEntities()
-            : base("name=ClassDeclarationsDBEntities")
+        public ClassDeclarationsDCEntities()
+            : base("name=ClassDeclarationsDCEntities")
         {
         }
     
