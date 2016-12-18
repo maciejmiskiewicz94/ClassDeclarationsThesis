@@ -11,12 +11,13 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using ClassDeclarationsThsesis.Models;
+using Task = System.Threading.Tasks.Task;
 
 namespace ClassDeclarationsThsesis
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public System.Threading.Tasks.Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
             return Task.FromResult(0);
@@ -25,7 +26,7 @@ namespace ClassDeclarationsThsesis
 
     public class SmsService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public System.Threading.Tasks.Task SendAsync(IdentityMessage message)
         {
             // Plug in your SMS service here to send a text message.
             return Task.FromResult(0);
