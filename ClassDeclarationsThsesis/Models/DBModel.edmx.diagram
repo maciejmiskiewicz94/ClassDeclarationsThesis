@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fbebb4dd517a4506a067c94c5ae6fdd0" Name="Diagram1">
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.Grading" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.Group" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.Subject" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.Subjects_Users" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.Task" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassDeclarationsDCModel.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.FK_Grading_Tasks" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.FK_Grading_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.FK_Group_Subjects" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.FK_Group_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.FK_Subjects_Users_Subjects" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.FK_Subjects_Users_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="ClassDeclarationsDCModel.Subjects_Tasks" ManuallyRouted="false" />
+      <Diagram DiagramId="100b57c48c0c47ad821b668538fa6eac" Name="Diagram1">
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.Grading" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.Group" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.Subject" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.Subjects_Users" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.Task" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassDeclarationsDBModel.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.FK_Grading_Tasks" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.FK_Grading_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.FK_Group_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.FK_Group_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.FK_Subjects_Users_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.FK_Subjects_Users_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassDeclarationsDBModel.Subjects_Tasks" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
