@@ -21,7 +21,17 @@ namespace ClassDeclarationsThsesis.Models
             this.Groups = new HashSet<Group>();
             this.Subjects_Users = new HashSet<Subjects_Users>();
         }
-    
+
+        public User(string modelName, string modelSurname, int i, int i1, string modelPassword, string modelEmail)
+        {
+            this.name = modelName;
+            this.surname = modelSurname;
+            this.user_type = i.ToString();
+            this.user_id = i1;
+            this.password = modelPassword;
+            this.email = modelEmail;
+        }
+
         public string name { get; set; }
         public string surname { get; set; }
         public string user_type { get; set; }

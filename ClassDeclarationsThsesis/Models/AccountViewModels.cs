@@ -86,7 +86,7 @@ namespace ClassDeclarationsThsesis.Models
         public string Name { get; set; }
         [Required]
         [Display(Name="Surname*")]
-        public object Surname { get; set; }
+        public string Surname { get; set; }
         [Display(Name = "Index number")]
         public object IndexNumber { get; set; }
         [Display(Name = "Dean's group")]
