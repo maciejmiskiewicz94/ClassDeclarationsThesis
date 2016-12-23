@@ -491,7 +491,8 @@ namespace ClassDeclarationsThsesis.Controllers
 
         public ActionResult MyMarks()
         {
-            return View();
+            ClassDeclarationsDBEntities1 entities=new ClassDeclarationsDBEntities1();
+            return View(entities.Users.ToList());
         }
 
         public ActionResult Declare()

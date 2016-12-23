@@ -1,4 +1,6 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@using ClassDeclarationsThsesis.Models
+@using Microsoft.AspNet.Identity
+@model List<User>
 @{
     ViewBag.Title = "My Marks";
 }
@@ -6,14 +8,24 @@
     <h4>Account information</h4>
     <hr/>
     <dl class="dl-horizontal">
-        <dt>Name</dt>
-        <dd>Student's name</dd>
-        <dt>Surname</dt>
-        <dd>Student's surname</dd>
-        <dt>Email</dt>
-        <dd>
-            @HttpContext.Current.User.Identity.Name
-        </dd>
+        @foreach (var student in Model)
+        {
+            if (student.email.Replace(" ",String.Empty) == HttpContext.Current.User.Identity.Name)
+            {
+                <dl class="dl-horizontal">
+                    <dt>Name</dt>
+                    <dd>@student.name</dd>
+                    <dd></dd>
+                    <dt>Surname</dt>
+                    <dd>@student.surname</dd>
+                    <dt>Email</dt>
+                    <dd>
+                        @HttpContext.Current.User.Identity.Name
+                    </dd>
+                </dl>
+            }
+        }
+       
     </dl>
 </div>
 <div>
