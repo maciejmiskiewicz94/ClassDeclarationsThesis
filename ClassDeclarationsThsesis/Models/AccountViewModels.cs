@@ -68,6 +68,7 @@ namespace ClassDeclarationsThsesis.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email*")]
+        [RegularExpression(@"^[a-zA-Z0-9._%+-]+(@student.mini.pw.edu.pl|@mini.pw.edu.pl)$", ErrorMessage = "Registration limited to university domail email.")]
         public string Email { get; set; }
 
         [Required]

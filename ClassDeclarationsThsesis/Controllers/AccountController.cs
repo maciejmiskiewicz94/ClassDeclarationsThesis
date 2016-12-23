@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -151,13 +152,16 @@ namespace ClassDeclarationsThsesis.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
+                int maxID = entities.Users.Max(u => u.user_id);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var user1=new Models.User(model.Name,model.Surname,1,1,model.Password,model.Email);
+                var user1=new Models.User(model.Name,model.Surname,1,maxID+1,model.Password,model.Email);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    ClassDeclarationsDBEntities1 entities=new ClassDeclarationsDBEntities1();
                     entities.Users.Add(user1);
                     entities.SaveChangesAsync();
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
