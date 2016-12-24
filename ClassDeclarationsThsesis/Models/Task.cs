@@ -20,7 +20,16 @@ namespace ClassDeclarationsThsesis.Models
             this.Gradings = new HashSet<Grading>();
             this.Subjects = new HashSet<Subject>();
         }
-    
+
+        public Task(string a1, int i, DateTime now, int i1, int i2)
+        {
+            this.name = a1;
+            this.class_id = i;
+            this.deadline = now;
+            this.points = i1;
+            this.task_id = i2;
+        }
+
         public string name { get; set; }
         public int class_id { get; set; }
         public System.DateTime deadline { get; set; }

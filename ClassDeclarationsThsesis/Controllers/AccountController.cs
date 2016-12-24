@@ -156,11 +156,12 @@ namespace ClassDeclarationsThsesis.Controllers
                 ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
                 int maxID = entities.Users.Max(u => u.user_id);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var user1=new Models.User(model.Name,model.Surname,1,maxID+1,model.Password,model.Email);
+                var user1=new Models.User(model.Name,model.Surname,2,maxID+1,model.Password,model.Email);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    
+                   
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     entities.Users.Add(user1);
                     entities.SaveChangesAsync();
@@ -497,7 +498,8 @@ namespace ClassDeclarationsThsesis.Controllers
 
         public ActionResult Declare()
         {
-            return View();
+            ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
+            return View(entities.Tasks.ToList());
         }
 
         public ActionResult SetHomework()

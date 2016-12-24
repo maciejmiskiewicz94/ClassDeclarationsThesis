@@ -1,7 +1,9 @@
-﻿
+﻿@using ClassDeclarationsThsesis.Models
+@using Microsoft.AspNet.Identity
+@model List<Task>
 @{
     ViewBag.Title = "Declare";
-    
+
 }
 
 <h2>Declare</h2>
@@ -23,18 +25,16 @@
             <th>Task name</th>
             <th>Declare</th>
         </tr>
-        <tr>
-            <th>A1</th>
-            <th>&nbsp;<input type="checkbox"/></th>
-        </tr>
-        <tr>
-            <th>A2</th>
-            <th>&nbsp;<input type="checkbox" /></th>
-        </tr>
-        <tr>
-            <th>A3</th>
-            <th>&nbsp;<input type="checkbox" /></th>
-        </tr>
+       
+            @foreach (var task in Model)
+            {
+                <tr>
+                    <th>@task.name</th>
+                    <th>&nbsp;<input type="checkbox" /></th>
+                </tr>
+            }
+        
+
     </table>
 
     <button type="button">Submit</button>
@@ -46,19 +46,15 @@
 </div>
 
 <style media="screen" type="text/css">
-   .left {
- 
-  position: absolute;
-  left: 15px;
-  width: 50%;
-}
+    .left {
+        position: absolute;
+        left: 15px;
+        width: 50%;
+    }
 
-.right {
-
-  position: absolute;
-  right: 15px;
-  width: 50%;
-
-  
-}
+    .right {
+        position: absolute;
+        right: 15px;
+        width: 50%;
+    }
 </style>
