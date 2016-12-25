@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace ClassDeclarationsThsesis.Models
 {
@@ -15,7 +16,15 @@ namespace ClassDeclarationsThsesis.Models
     {
         public string ReturnUrl { get; set; }
     }
+    public class SetHomeworkViewModel
+    {
+        [Required]
+        [Display(Name = "File")]
+        public string FilePath { get; set; }
 
+      
+        public string ReturnUrl { get; set; }
+    }
     public class SendCodeViewModel
     {
         public string SelectedProvider { get; set; }

@@ -1,19 +1,24 @@
-﻿
+﻿@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@model List<ClassDeclarationsThsesis.Models.Task>
 @{
     ViewBag.Title = "Classes";
 }
+
 
 <h2>Classes</h2>
 
 <div>
     <h4>Classes view</h4>
-    <hr/>
+    <hr />
     <dl class="dl-horizontal">
         <dt>Pick a Subject</dt>
-        <dd><select>
-            <option value="NM1">NM1</option>
-            <option value="NM2">NM2</option>
-        </select></dd>
+        <dd>
+            <select>
+                <option value="NM1">NM1</option>
+                <option value="NM2">NM2</option>
+            </select>
+        </dd>
         <dt>Pick the Group</dt>
         <dd>
             <select>
@@ -23,14 +28,14 @@
         </dd>
         <dt>View</dt>
         <dd>
-            <select>
-                <option value="weekly">Weekly</option>
+            <select id="sel">
+                <option value="week">Weekly</option>
                 <option value="total">Total</option>
             </select>
         </dd>
     </dl>
 </div>
-<div>
+<div id="total">
     <h4>Class content</h4>
     <table border="1" , width="300">
         <tr>
@@ -51,4 +56,41 @@
         </tr>
     </table>
 </div>
+<div id="week">
+    <table border="1" width="500">
+        <tr>
+            <th>Surname</th>
+            <th>Name</th>
+            @foreach (var task in Model)
+            {
+                <th>@task.name</th>
+            }
+            <th>Score</th>
+        </tr>
+    </table>
 
+</div>
+
+<script type='text/javascript'>
+
+    $(function () {
+
+        $("#total").hide();
+
+        console.log($("#sel"));
+        $("#sel").change(function () {
+
+            var selectedItem = $(this).val();
+
+            if (selectedItem == "week") {
+                $("#week").show();
+                $("#total").hide();
+            }
+            else if (selectedItem == "total") {
+                $("#total").show();
+                $("#week").hide();
+            }
+
+        });
+    });
+</script>

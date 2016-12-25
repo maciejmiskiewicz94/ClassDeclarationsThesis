@@ -502,14 +502,23 @@ namespace ClassDeclarationsThsesis.Controllers
             return View(entities.Tasks.ToList());
         }
 
-        public ActionResult SetHomework()
+        public ActionResult SetHomework(SetHomeworkViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+
+                ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
+                
+            }
             return View();
         }
 
         public ActionResult Classes()
         {
-            return View();
+            ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
+            return View(entities.Tasks.ToList());
         }
     }
+
+    
 }
