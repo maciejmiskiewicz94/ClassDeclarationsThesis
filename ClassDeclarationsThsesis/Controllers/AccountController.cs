@@ -500,6 +500,7 @@ namespace ClassDeclarationsThsesis.Controllers
         {
             ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
             return View(entities.Tasks.ToList());
+           
         }
 
         public ActionResult SetHomework(SetHomeworkViewModel model)
@@ -519,7 +520,14 @@ namespace ClassDeclarationsThsesis.Controllers
         public ActionResult Classes()
         {
             ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
-            return View(entities.Tasks.ToList());
+
+            var model = new ClassesViewModel();
+            model.task = entities.Tasks.ToList();
+            model.subject = entities.Subjects.ToList();
+
+            return View(model);
+            //ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
+            //return View(entities.Tasks.ToList());
         }
     }
 

@@ -1,7 +1,6 @@
 ﻿@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
-@model List<ClassDeclarationsThsesis.Models.Task>
-@{
+@model ClassDeclarationsThsesis.Models.ClassesViewModel
     ViewBag.Title = "Classes";
 }
 
@@ -15,8 +14,11 @@
         <dt>Pick a Subject</dt>
         <dd>
             <select>
-                <option value="NM1">NM1</option>
-                <option value="NM2">NM2</option>
+               @foreach (var subject in Model.subject)
+               {
+                   <option>@subject.name</option>
+               }
+              
             </select>
         </dd>
         <dt>Pick the Group</dt>
@@ -61,7 +63,7 @@
         <tr>
             <th>Surname</th>
             <th>Name</th>
-            @foreach (var task in Model)
+            @foreach (var task in Model.task)
             {
                 <th>@task.name</th>
             }

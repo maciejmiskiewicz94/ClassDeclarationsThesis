@@ -16,6 +16,13 @@ namespace ClassDeclarationsThsesis.Models
     {
         public string ReturnUrl { get; set; }
     }
+
+    public class ClassesViewModel
+    {
+        public List<Task> task { set; get; }
+        public List<Subject> subject { set; get; }
+    }
+
     public class SetHomeworkViewModel
     {
         [Required]
