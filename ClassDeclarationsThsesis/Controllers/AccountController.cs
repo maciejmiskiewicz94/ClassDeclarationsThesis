@@ -504,12 +504,15 @@ namespace ClassDeclarationsThsesis.Controllers
 
         public ActionResult SetHomework(SetHomeworkViewModel model)
         {
-            if (ModelState.IsValid)
+            
+                if (ModelState.IsValid)
             {
 
                 ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
-                
+                return RedirectToAction("Index", "Home");
+
             }
+
             return View();
         }
 

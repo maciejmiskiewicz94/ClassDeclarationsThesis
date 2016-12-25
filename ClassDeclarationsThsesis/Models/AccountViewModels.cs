@@ -19,10 +19,32 @@ namespace ClassDeclarationsThsesis.Models
     public class SetHomeworkViewModel
     {
         [Required]
-        [Display(Name = "File")]
-        public string FilePath { get; set; }
+        [Display(Name = "Subject Name")]
+        public string subject_name { get; set; }
+        [Required]
+        [Display(Name="File path")]
+        public string file_path { get; set; }
+        
+        public string task1_name { get; set; }
+        public double task1_points { get; set; }
+        public string task2_name { get; set; }
+        public double task2_points { get; set; }
+        public string task3_name { get; set; }
+        public double task3_points { get; set; }
+        public string task4_name { get; set; }
+        public double task4_points { get; set; }
+        public string task5_name { get; set; }
+        public double task5_points { get; set; }
+        public string task6_name { get; set; }
+        public double task6_points { get; set; }
+        public string task7_name { get; set; }
+        public double task7_points { get; set; }
+        [Display(Name = "Deadline")]
+        [Required]
+        [RegularExpression(@"^[0-9._%+-]+(/)+[0-9._%+-]+(/)+[0-9._%+-]$", ErrorMessage = "Input date has to be of form DD/MM/YYYY")]
+        public string deadline { get; set; }
 
-      
+
         public string ReturnUrl { get; set; }
     }
     public class SendCodeViewModel

@@ -1,57 +1,137 @@
-﻿
+﻿@using Microsoft.Owin.Security
+@model ClassDeclarationsThsesis.Models.SetHomeworkViewModel
 @{
-    ViewBag.Title = "Set a homework";
+    ViewBag.Title = "Set Homework";
 }
 
-<h2>This window will only be accessible to teachers after logging in.</h2>
+<h2>@ViewBag.Title.</h2>
+<h3>Items marked with * are obligatory.</h3>
 
-<select class="form-control" name="Subjects">
-    <option>Select Subject</option>
-    <option>NM 1</option>
-    <option>NM 2</option>
-</select>
-<br>
-<p>Upload Homework:</p>
-<form action="demo_form.asp">
-    <input type="file" name="pic" accept="image/*">
-</form>
-<br>
-<table border="1" , width="300">
-    <tr>
-        <th>Task name</th>
-        <th>Points</th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task1"></th>
-        <th><input type="text" name="point1"></th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task1"></th>
-        <th><input type="text" name="point2"></th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task3"></th>
-        <th><input type="text" name="point3"></th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task4"></th>
-        <th><input type="text" name="point4"></th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task5"></th>
-        <th><input type="text" name="point5"></th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task6"></th>
-        <th><input type="text" name="point6"></th>
-    </tr>
-    <tr>
-        <th><input type="text" name="task7"></th>
-        <th><input type="text" name="point7"></th>
-    </tr>
-</table>
-<br>
-<p>Deadline: &nbsp;<input type="datetime"></p>
-<br>
-<button type="button">Submit</button>
+@using (Html.BeginForm("SetHomework", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new account.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @{
+            List<SelectListItem> listItems1 = new List<SelectListItem>();
+            listItems1.Add(new SelectListItem
+            {
+                Text = "NM1",
+                Value = "NM1"
+            });
+            listItems1.Add(new SelectListItem
+            {
+                Text = "NM2",
+                Value = "NM2",
+                Selected = true
+            });
+
+        }
+        @Html.LabelFor(m => m.subject_name, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.subject_name, listItems1, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.file_path, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.file_path, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.deadline, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.deadline, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <table border="1" , width="300">
+            <tr>
+                <th>Task name</th>
+                <th>Points</th>
+            </tr>
+            <tr>
+
+                <th>
+                    @Html.TextAreaFor(m => m.task1_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task1_points, new { @class = "form-control" })
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.TextAreaFor(m => m.task2_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task2_points, new { @class = "form-control" })
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.TextAreaFor(m => m.task3_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task3_points, new { @class = "form-control" })
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.TextAreaFor(m => m.task4_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task4_points, new { @class = "form-control" })
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.TextAreaFor(m => m.task5_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task5_points, new { @class = "form-control" })
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.TextAreaFor(m => m.task6_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task6_points, new { @class = "form-control" })
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    @Html.TextAreaFor(m => m.task7_name, new { @class = "form-control" })
+                </th>
+                <th>
+                    @Html.TextAreaFor(m => m.task7_points, new { @class = "form-control" })
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    
+
+
+    
+ 
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit" />
+        </div>
+    </div>
+            }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
 
