@@ -156,7 +156,7 @@ namespace ClassDeclarationsThsesis.Controllers
                 ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
                 int maxID = entities.Users.Max(u => u.user_id);
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var user1=new Models.User(model.Name,model.Surname,2,maxID+1,model.Password,model.Email);
+                var user1=new Models.User(model.Name,model.Surname,1,maxID+1,model.Password,model.Email);
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -492,15 +492,17 @@ namespace ClassDeclarationsThsesis.Controllers
 
         public ActionResult MyMarks()
         {
+
             ClassDeclarationsDBEntities1 entities=new ClassDeclarationsDBEntities1();
+            
             return View(entities.Users.ToList());
+        
         }
 
         public ActionResult Declare()
         {
             ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
             return View(entities.Tasks.ToList());
-           
         }
 
         public ActionResult SetHomework(SetHomeworkViewModel model)
@@ -524,12 +526,64 @@ namespace ClassDeclarationsThsesis.Controllers
             var model = new ClassesViewModel();
             model.task = entities.Tasks.ToList();
             model.subject = entities.Subjects.ToList();
-
+            model.users = entities.Users.ToList();
             return View(model);
             //ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
             //return View(entities.Tasks.ToList());
         }
+
+        public ActionResult AddSubject(AddSubjectViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                int maxId = 0;
+                int userid = 0;
+                ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
+                var sql = "SELECT COUNT(*) FROM dbo.Subjects";
+                var total = entities.Database.SqlQuery<int>(sql).Single();
+
+                if (total == 0)
+                {
+                    maxId = 0;
+                }
+                else
+                {
+                    maxId = entities.Subjects.Max(u => u.class_id);
+
+                }
+                foreach (var user in entities.Users)
+                {
+                    if (user.email.Replace(" ", String.Empty) == HttpContext.User.Identity.Name)
+                    {
+                        userid = user.user_id;
+                    }
+                }
+                var subject = new Models.Subject(maxId + 1, userid, model.name);
+                entities.Subjects.Add(subject);
+                entities.SaveChangesAsync();
+                TempData["alterMessage"] = "Operation Succeeded!";
+                return RedirectToAction("OperationSuccess", "Account");
+            }
+            var entities1 = new ClassDeclarationsDBEntities1();
+            var model1 = new AddSubjectViewModel();
+            model1.Users = entities1.Users.ToList();
+            return View(model1);
+        }
+
+        public ActionResult OperationSuccess()
+        {
+            return View();
+        }
+        public ActionResult AddGroup(AddGroupViewModel model)
+        {
+            var entities = new ClassDeclarationsDBEntities1();
+            var model1 = new AddGroupViewModel();
+            model1.Subjects = entities.Subjects.ToList();
+            model1.Users = entities.Users.ToList();
+            // set your other properties too?
+            return View(model1);
+        }
     }
 
-    
+   
 }

@@ -341,6 +341,9 @@
     <Content Include="Views\Account\SetHomework.cshtml" />
     <Content Include="Views\Account\MyMarks.cshtml" />
     <Content Include="Views\Account\Classes.cshtml" />
+    <Content Include="Views\Account\AddSubject.cshtml" />
+    <Content Include="Views\Account\AddGroup.cshtml" />
+    <Content Include="Views\Account\OperationSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Classes\" />

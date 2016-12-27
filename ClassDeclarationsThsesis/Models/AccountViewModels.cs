@@ -17,12 +17,15 @@ namespace ClassDeclarationsThsesis.Models
         public string ReturnUrl { get; set; }
     }
 
-    public class ClassesViewModel
+    public class AddSubjectViewModel
     {
-        public List<Task> task { set; get; }
-        public List<Subject> subject { set; get; }
-    }
+        [Required]
+        [Display(Name = "Name")]
+        public string name { get; set; }
+        public List<User> Users { get; set; }
 
+
+    }
     public class SetHomeworkViewModel
     {
         [Required]
@@ -48,7 +51,8 @@ namespace ClassDeclarationsThsesis.Models
         public double task7_points { get; set; }
         [Display(Name = "Deadline")]
         [Required]
-        [RegularExpression(@"^[0-9._%+-]+(/)+[0-9._%+-]+(/)+[0-9._%+-]$", ErrorMessage = "Input date has to be of form DD/MM/YYYY")]
+        [RegularExpression(@"^[0-9]+(/)+[0-9]+(/)+[1-9]$", ErrorMessage = "Input date has to be of form DD/MM/YYYY")]
+
         public string deadline { get; set; }
 
 
@@ -78,11 +82,29 @@ namespace ClassDeclarationsThsesis.Models
         public bool RememberMe { get; set; }
     }
 
+    public class AddGroupViewModel
+    {
+        public List<Subject> Subjects { get; set; }
+        public List<User> Users { get; set; }
+        [Required]
+        [Display(Name = "Subject")]
+        public string subject_name { get; set; }
+
+        [Required]
+        [Display(Name = "Number of Groups")]
+        public int qty { get; set; }
+    }
     public class ForgotViewModel
     {
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+    public class ClassesViewModel
+    {
+        public List<Task> task { set; get; }
+        public List<Subject> subject { set; get; }
+        public List<User> users { get; set; }
     }
 
     public class LoginViewModel

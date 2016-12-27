@@ -1,98 +1,114 @@
 ﻿@Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @model ClassDeclarationsThsesis.Models.ClassesViewModel
+    @{
     ViewBag.Title = "Classes";
 }
 
 
 <h2>Classes</h2>
 
-<div>
-    <h4>Classes view</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>Pick a Subject</dt>
-        <dd>
-            <select>
-               @foreach (var subject in Model.subject)
-               {
-                   <option>@subject.name</option>
-               }
-              
-            </select>
-        </dd>
-        <dt>Pick the Group</dt>
-        <dd>
-            <select>
-                <option value="Monday8am">Monday 8 am</option>
-                <option value="Friday8pm">Friday 8 pm</option>
-            </select>
-        </dd>
-        <dt>View</dt>
-        <dd>
-            <select id="sel">
-                <option value="week">Weekly</option>
-                <option value="total">Total</option>
-            </select>
-        </dd>
-    </dl>
-</div>
-<div id="total">
-    <h4>Class content</h4>
-    <table border="1" , width="300">
-        <tr>
-            <th>Student</th>
-            <th>Score</th>
-        </tr>
-        <tr>
-            <th>Maciej Miśkiewicz</th>
-            <th>200</th>
-        </tr>
-        <tr>
-            <th>Yulia Buyanova</th>
-            <th>300</th>
-        </tr>
-        <tr>
-            <th>Jan Kowalski</th>
-            <th>10</th>
-        </tr>
-    </table>
-</div>
-<div id="week">
-    <table border="1" width="500">
-        <tr>
-            <th>Surname</th>
-            <th>Name</th>
-            @foreach (var task in Model.task)
-            {
-                <th>@task.name</th>
-            }
-            <th>Score</th>
-        </tr>
-    </table>
+@foreach (var user in Model.users)
+{
+    if (user.email.Replace(" ", String.Empty) == HttpContext.Current.User.Identity.Name)
+    {
+        if (user.user_type.Replace(" ", String.Empty) == 3.ToString() || user.user_type.Replace(" ", String.Empty) == 2.ToString())
+        {
+            <div>
+                <h4>Classes view</h4>
+                <hr/>
+                <dl class="dl-horizontal">
+                    <dt>Pick a Subject</dt>
+                    <dd>
+                        <select>
+                            @foreach (var subject in Model.subject)
+                            {
+                                <option>@subject.name</option>
+                            }
 
-</div>
+                        </select>
+                    </dd>
+                    <dt>Pick the Group</dt>
+                    <dd>
+                        <select>
+                            <option value="Monday8am">Monday 8 am</option>
+                            <option value="Friday8pm">Friday 8 pm</option>
+                        </select>
+                    </dd>
+                    <dt>View</dt>
+                    <dd>
+                        <select id="sel">
+                            <option value="week">Weekly</option>
+                            <option value="total">Total</option>
+                        </select>
+                    </dd>
+                </dl>
+            </div>
+            <div id="total">
+                <h4>Class content</h4>
+                <table border="1" , width="300">
+                    <tr>
+                        <th>Student</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr>
+                        <th>Maciej Miśkiewicz</th>
+                        <th>200</th>
+                    </tr>
+                    <tr>
+                        <th>Yulia Buyanova</th>
+                        <th>300</th>
+                    </tr>
+                    <tr>
+                        <th>Jan Kowalski</th>
+                        <th>10</th>
+                    </tr>
+                </table>
+            </div>
+            <div id="week">
+                <table border="1" width="500">
+                    <tr>
+                        <th>Surname</th>
+                        <th>Name</th>
+                        @foreach (var task in Model.task)
+                        {
+                            <th>@task.name</th>
+                        }
+                        <th>Score</th>
+                    </tr>
+                </table>
 
-<script type='text/javascript'>
+            </div>
 
-    $(function () {
+            <script type='text/javascript'>
 
-        $("#total").hide();
+                $(function() {
 
-        console.log($("#sel"));
-        $("#sel").change(function () {
+                    $("#total").hide();
 
-            var selectedItem = $(this).val();
+                    console.log($("#sel"));
+                    $("#sel")
+                        .change(function() {
 
-            if (selectedItem == "week") {
-                $("#week").show();
-                $("#total").hide();
-            }
-            else if (selectedItem == "total") {
-                $("#total").show();
-                $("#week").hide();
-            }
+                            var selectedItem = $(this).val();
 
-        });
-    });
-</script>
+                            if (selectedItem == "week") {
+                                $("#week").show();
+                                $("#total").hide();
+                            } else if (selectedItem == "total") {
+                                $("#total").show();
+                                $("#week").hide();
+                            }
+
+                        });
+                });
+            </script>
+        }
+        else
+        {
+            <p>You do not have enough permissions to enter this page. Contact the administrator.</p>
+
+        }
+    }
+
+}

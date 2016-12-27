@@ -1,4 +1,5 @@
-﻿@using ClassDeclarationsThsesis.Models
+﻿@using System.Diagnostics.Eventing.Reader
+@using ClassDeclarationsThsesis.Models
 @using Microsoft.AspNet.Identity
 @model List<User>
 @{
@@ -6,12 +7,13 @@
 }
 <div>
     <h4>Account information</h4>
-    <hr/>
+    <hr />
     <dl class="dl-horizontal">
         @foreach (var student in Model)
         {
-            if (student.email.Replace(" ",String.Empty) == HttpContext.Current.User.Identity.Name)
+            if (student.email.Replace(" ", String.Empty) == HttpContext.Current.User.Identity.Name)
             {
+
                 <dl class="dl-horizontal">
                     <dt>Name</dt>
                     <dd>@student.name</dd>
@@ -22,32 +24,79 @@
                     <dd>
                         @HttpContext.Current.User.Identity.Name
                     </dd>
+                    <dt>User type</dt>
+
+                    @if (student.user_type.Replace(" ", String.Empty) == 1.ToString())
+                    {
+                        <dd>Student</dd>
+
+                    }
+                    @if (student.user_type.Replace(" ", String.Empty) == 2.ToString())
+                    {
+                        <dd>Teacher</dd>
+                    }
+                    @if (student.user_type.Replace(" ", String.Empty) == 3.ToString())
+                    {
+                        <dd>Head Teacher</dd>
+                    }
+
                 </dl>
             }
+
         }
-       
+
     </dl>
 </div>
-<div>
-    <h4>Marks</h4>
-    <table border="1", width="300">
-        <tr>
-            <th>Task name</th>
-            <th>Points</th>
-        </tr>
-        <tr>
-            <th>A1</th>
-            <th>2</th>
-        </tr>
-        <tr>
-            <th>A2</th>
-            <th>0</th>
-        </tr>
-        <tr>
-            <th>A3</th>
-            <th>10</th>
-        </tr>
-    </table>
-</div>
+@foreach (var user in Model)
+
+{
+    if (user.email.Replace(" ", String.Empty) == HttpContext.Current.User.Identity.Name)
+    {
+
+        if (user.user_type.Replace(" ", String.Empty) == 1.ToString())
+        {
+            <div>
+                <h4>Marks</h4>
+                <table border="1" , width="300">
+                    <tr>
+                        <th>Task name</th>
+                        <th>Points</th>
+                    </tr>
+                    <tr>
+                        <th>A1</th>
+                        <th>2</th>
+                    </tr>
+                    <tr>
+                        <th>A2</th>
+                        <th>0</th>
+                    </tr>
+                    <tr>
+                        <th>A3</th>
+                        <th>10</th>
+                    </tr>
+                </table>
+            </div>
+            <a href="Declare"><input type="button" class="btn btn-default" value="Declare" /></a>
+
+        }
+        else if (user.user_type.Replace(" ", String.Empty) == 2.ToString())
+        {
+            <a href="AddGroup"><input type="button" class="btn btn-default" value="Add Groups" /></a>
+            <a href="SetHomework"><input type="button" class="btn btn-default" value="Set Homework" /></a>
+            <a href="Classes"><input type="button" class="btn btn-default" value="Classes" /></a>
+
+
+        }
+        else if (user.user_type.Replace(" ", String.Empty) == 3.ToString())
+        {
+            <a href="AddSubject"><input type="button" class="btn btn-default" value="Add new Subject" /></a>
+            <a href="AddGroup"><input type="button" class="btn btn-default" value="Add Groups" /></a>
+            <a href="SetHomework"><input type="button" class="btn btn-default" value="Set Homework" /></a>
+            <a href="Classes"><input type="button" class="btn btn-default" value="Classes" /></a>
+
+
+        }
+    }
+}
 
 
