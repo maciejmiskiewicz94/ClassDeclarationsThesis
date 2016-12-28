@@ -344,6 +344,7 @@
     <Content Include="Views\Account\AddSubject.cshtml" />
     <Content Include="Views\Account\AddGroup.cshtml" />
     <Content Include="Views\Account\OperationSuccess.cshtml" />
+    <Content Include="Views\Account\AddGroupsQty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Classes\" />

@@ -14,6 +14,14 @@ namespace ClassDeclarationsThsesis.Models
     
     public partial class Group
     {
+        public Group(int id, int i, string modelGroupName, int teacherUserId)
+        {
+            this.class_id = id;
+            this.group_id = i;
+            this.name = modelGroupName;
+            this.user_id = teacherUserId;
+        }
+
         public int class_id { get; set; }
         public int group_id { get; set; }
         public string name { get; set; }

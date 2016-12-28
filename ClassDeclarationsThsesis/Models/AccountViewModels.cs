@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Web.Mvc;
 
 namespace ClassDeclarationsThsesis.Models
 {
@@ -81,9 +82,21 @@ namespace ClassDeclarationsThsesis.Models
 
         public bool RememberMe { get; set; }
     }
-
+    public class AddGroupsQtyViewModel
+    {
+        public int qty { get; set; }
+        public int subject_id { get; set; }
+        public string subject_name { get; set; }
+        [Required]
+        [Display(Name = "Name of group")]
+        public List<string> group_names { get; set; }
+        [Required]
+        [Display(Name = "Email of teacher")]
+        public List<string> teacher_emails { get; set; }
+    }
     public class AddGroupViewModel
     {
+        public int subject_id { get; set; }
         public List<Subject> Subjects { get; set; }
         public List<User> Users { get; set; }
         [Required]
@@ -93,6 +106,7 @@ namespace ClassDeclarationsThsesis.Models
         [Required]
         [Display(Name = "Number of Groups")]
         public int qty { get; set; }
+
     }
     public class ForgotViewModel
     {
@@ -139,7 +153,7 @@ namespace ClassDeclarationsThsesis.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password*")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -176,7 +190,7 @@ namespace ClassDeclarationsThsesis.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

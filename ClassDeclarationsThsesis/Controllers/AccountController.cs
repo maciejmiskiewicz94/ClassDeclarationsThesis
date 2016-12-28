@@ -519,6 +519,52 @@ namespace ClassDeclarationsThsesis.Controllers
             return View();
         }
 
+        //public ActionResult AddGroupsQty()
+        //{
+
+        //    return View();
+        //}
+        //public ActionResult AddGroupsQty(int qty, int id)
+        public ActionResult AddGroupsQty(AddGroupsQtyViewModel value)
+        {
+
+            var model = new AddGroupsQtyViewModel();
+            model.subject_id = value.subject_id;
+            model.qty = value.qty;
+            ClassDeclarationsDBEntities1 entities1=new ClassDeclarationsDBEntities1();
+            var subj = entities1.Subjects
+                    .Where(b => b.class_id == model.subject_id)
+                    .FirstOrDefault();
+            model.subject_name = subj.name;
+            if (ModelState.IsValid)
+            {
+                int maxId = 0;
+                int total = 0;
+
+                total = entities1.Groups.Count();
+                if (total == 0)
+                {
+                    maxId = 0;
+                }
+                else
+                {
+                    maxId = entities1.Groups.Max(u => u.group_id);
+
+                }
+                for (int i = 0; i < value.qty; i++)
+                {
+                    var teacher = entities1.Users
+                    .Where(b => b.email.Replace(" ", String.Empty) == model.teacher_emails[i].Replace(" ", String.Empty))
+                    .FirstOrDefault();
+                    var group=new Models.Group(value.subject_id, maxId+1, model.group_names[i], teacher.user_id);
+                    entities1.Groups.Add(group);
+                    entities1.SaveChangesAsync();
+                }
+                return RedirectToAction("OperationSuccess", "Account");
+
+            }
+            return View(model);
+        }
         public ActionResult Classes()
         {
             ClassDeclarationsDBEntities1 entities = new ClassDeclarationsDBEntities1();
@@ -581,6 +627,18 @@ namespace ClassDeclarationsThsesis.Controllers
             model1.Subjects = entities.Subjects.ToList();
             model1.Users = entities.Users.ToList();
             // set your other properties too?
+
+            
+            if (ModelState.IsValid)
+            {
+                var subj = entities.Subjects
+                    .Where(b => b.name == model.subject_name)
+                    .FirstOrDefault();
+                int id = subj.class_id;
+              //  return RedirectToAction("AddGroupsQty", "Account", new { qty = model.qty, subject_id = id});
+                return RedirectToAction("AddGroupsQty", "Account", new { qty = model.qty, id = id });
+
+            }
             return View(model1);
         }
     }

@@ -1,0 +1,69 @@
+﻿@using System.IdentityModel.Configuration
+@using System.Web.UI.WebControls
+@model ClassDeclarationsThsesis.Models.AddGroupsQtyViewModel
+
+@{
+    ViewBag.Title = "AddGroupsQty";
+}
+
+<h2>Add Groups to @Model.subject_name</h2>
+@if (Model != null)
+{
+
+
+    using (Html.BeginForm("AddGroupsQty", "Account", new { qty = Model.qty, Model.subject_id }, FormMethod.Post, new { @class = "form-horizontal", role = "form", }))
+    {
+            @Html.AntiForgeryToken()
+            <h4>Insert data</h4>
+            <hr />
+            <table>
+                <tr>
+                    <th>
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.group_names, new { @class = "col-md-2 control-label" })
+                        </div>
+                    </th>
+                    <th>
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.teacher_emails, new { @class = "col-md-2 control-label" })
+                        </div>
+                    </th>
+                </tr>
+     
+                @for (int i = 0; i < Model.qty; i++)
+                {
+                    <tr>
+                        <th>
+                            <div class="form-group">
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(m => m.group_names[i], new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                        </th>
+                        <th>
+                            <div class="form-group">
+                                <div class="col-md-10">
+
+                                    @Html.TextBoxFor(m => m.teacher_emails[i], new { @class = "form-control" })
+                                </div>
+                            </div>
+
+
+
+                        </th>
+                    </tr>
+                }
+            </table>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Submit" />
+                </div>
+            </div>
+                    }
+                        }
+                    
